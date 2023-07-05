@@ -15,15 +15,8 @@ dist/
 build/
 .venv
 
-# Sphinx
-doc/_build/
-doc/api/generated
+# project stuff
+data/BFSongRepo/
+data/canary/
+results/
 
-# test data
-tests/data_for_tests/source/
-tests/data_for_tests/generated/
-*.tar.gz
-
-# coverage / pytest-cov
-.coverage
-coverage.xml
