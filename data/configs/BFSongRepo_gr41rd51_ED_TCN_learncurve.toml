@@ -1,0 +1,40 @@
+[PREP]
+dataset_type = "frame classification"
+input_type = "spect"
+labelset = "iabcdefgjkm"
+data_dir = "~/Documents/data/vocal/bfsongrepo/gr41rd51/062112/has_annot"
+output_dir = "./data/BFSongRepo/gr41rd51"
+audio_format = "wav"
+annot_format = "simple-seq"
+test_dur = 400
+train_dur = 900
+val_dur = 80
+train_set_durs = [ 30, 45, 75, 120, 180, 480, 600,]
+num_replicates = 5
+
+[SPECT_PARAMS]
+fft_size = 512
+step_size = 64
+
+[LEARNCURVE]
+models = "ED_TCN"
+normalize_spectrograms = "Yes"
+batch_size = 8
+num_epochs = 50
+val_step = 400
+ckpt_step = 200
+patience = 4
+num_workers = 4
+device = "cuda"
+root_results_dir = "./results/BFSongRepo/gr41rd51/ED_TCN"
+dataset_path = "data/BFSongRepo/gr41rd51/has_annot-vak-frame-classification-dataset-generated-230629_172929"
+
+[DATALOADER]
+window_size = 176
+
+[LEARNCURVE.post_tfm_kwargs]
+majority_vote = true
+min_segment_dur = 0.02
+
+[ED_TCN.optimizer]
+lr = 0.001

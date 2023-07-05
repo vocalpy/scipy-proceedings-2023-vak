@@ -1,0 +1,41 @@
+[PREP]
+labelset = "s"
+data_dir = "~/Documents/data/vocal/bfsongrepo/binary-segmentation"
+output_dir = "./data/BFSongRepo/binary-segmentation"
+audio_format = "wav"
+annot_format = "simple-seq"
+test_dur = 1600
+train_dur = 3600
+val_dur = 320
+train_set_durs = [ 120, 180, 480, 600, 900,]
+num_replicates = 10
+
+[SPECT_PARAMS]
+fft_size = 512
+step_size = 32
+
+[LEARNCURVE]
+model = "TweetyNet"
+normalize_spectrograms = "Yes"
+batch_size = 8
+num_epochs = 50
+val_step = 400
+ckpt_step = 200
+patience = 4
+num_workers = 4
+device = "cuda"
+root_results_dir = "./results/BFSongRepo/binary-segmentation"
+dataset_path = "data/BFSongRepo/binary-segmentation/binary-segmentation-vak-dataset-generated-230612_223241"
+
+[DATALOADER]
+window_size = 352
+
+[LEARNCURVE.post_tfm_kwargs]
+majority_vote = true
+min_segment_dur = 0.01
+
+[TweetyNet.optimizer]
+lr = 0.001
+
+[TweetyNet.network]
+hidden_size = 256

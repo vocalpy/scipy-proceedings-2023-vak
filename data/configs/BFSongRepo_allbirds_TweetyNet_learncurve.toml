@@ -1,0 +1,43 @@
+[PREP]
+dataset_type = "frame classification"
+input_type = "spect"
+labelset = "range:0-36"
+data_dir = "~/Documents/data/vocal/bfsongrepo/all-birds"
+output_dir = "./data/BFSongRepo/all-birds"
+audio_format = "wav"
+annot_format = "simple-seq"
+test_dur = 1600
+train_dur = 3600
+val_dur = 320
+train_set_durs = [ 120, 180, 480, 600, 900,]
+num_replicates = 5
+
+[SPECT_PARAMS]
+fft_size = 512
+step_size = 64
+
+[LEARNCURVE]
+model = "TweetyNet"
+normalize_spectrograms = "Yes"
+batch_size = 16
+num_epochs = 15
+val_step = 1000
+ckpt_step = 500
+patience = 4
+num_workers = 16
+device = "cuda"
+root_results_dir = "./results/BFSongRepo/all-birds/TweetyNet"
+dataset_path = "data/BFSongRepo/all-birds/all-birds-vak-frame-classification-dataset-generated-230628_144255"
+
+[DATALOADER]
+window_size = 176
+
+[LEARNCURVE.post_tfm_kwargs]
+majority_vote = true
+min_segment_dur = 0.01
+
+[TweetyNet.optimizer]
+lr = 0.001
+
+[TweetyNet.network]
+hidden_size = 256
