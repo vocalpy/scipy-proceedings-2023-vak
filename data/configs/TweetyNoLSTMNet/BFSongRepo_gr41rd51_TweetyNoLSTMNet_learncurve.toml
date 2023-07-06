@@ -17,7 +17,7 @@ fft_size = 512
 step_size = 64
 
 [LEARNCURVE]
-models = "TweetyNoLSTMNet"
+model = "TweetyNoLSTMNet"
 normalize_spectrograms = "Yes"
 batch_size = 8
 num_epochs = 50
